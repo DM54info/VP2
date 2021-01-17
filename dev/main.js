@@ -3197,7 +3197,7 @@
         return Lockr
     })
 
-    define('two/about', [], function () {
+        /*define('two/about', [], function () {
         let initialized = false
 
         let about = {}
@@ -3211,7 +3211,7 @@
         }
 
         return about
-    })
+    })*/
 
     define('two/about/ui', [
         'two/ui'
