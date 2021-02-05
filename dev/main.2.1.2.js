@@ -4296,20 +4296,20 @@
 
     require([
         'two/ready',
-        'two/attackstart',
-        'two/attackstart/ui'
+        'two/attackStart',
+        'two/attackStart/ui'
     ], function (
         ready,
-        attackstart,
-        attackstartInterface
+        attackStart,
+        attackStartInterface
     ) {
-        if (attackstart.isInitialized()) {
+        if (attackStart.isInitialized()) {
             return false;
         }
 
         ready(function () {
-            attackstart.init();
-            attackstartInterface();
+            attackStart.init();
+            attackStartInterface();
         }, ['map']);
     });
 
