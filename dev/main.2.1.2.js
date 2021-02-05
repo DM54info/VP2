@@ -3561,7 +3561,7 @@
     };
 
     return about;
-});*/
+});
 
     define('two/about/ui', [
         'two/ui'
@@ -3613,7 +3613,7 @@
             about.init();
             aboutInterface();
         }, ['map']);
-    });
+    });*/
 
     define('two/attackView', [
         'two/ready',
