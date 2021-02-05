@@ -2417,7 +2417,7 @@
                 }
             }
         } // eslint-disable-line
-        const DEFAULT_LANG = 'en_us';
+        const DEFAULT_LANG = 'ru_ru'; //en_us
         const SHARED_LANGS = {
             'en_dk': 'en_us',
             'pt_pt': 'pt_br'
