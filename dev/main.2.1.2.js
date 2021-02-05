@@ -4245,6 +4245,75 @@
         });
     });
 
+    define('two/attackStart', [], function () {
+        let initialized = false;
+
+        const attackStart = {};
+
+        attackStart.isInitialized = function () {
+            return initialized;
+        };
+
+        attackStart.init = function () {
+            initialized = true;
+        };
+
+        return attackStart;
+    });
+
+    define('two/attackStart/ui', [
+        'two/ui'
+    ], function (
+        interfaceOverflow
+    ) {
+        let $scope;
+
+        const selectTab = function (tabType) {
+            $scope.selectedTab = tabType;
+        };
+
+        const init = function () {
+            interfaceOverflow.addDivisor(99);
+            const $button = interfaceOverflow.addMenuButton('AttackStart', 100);
+
+            $button.addEventListener('click', function () {
+                buildWindow();
+            });
+
+            interfaceOverflow.addTemplate('twoverflow_attackstart_window', `<div id=\"two-attackstart\" class=\"win-content\"><header class=\"win-head\"><h3>tw2overflow v2.1.0</h3><ul class=\"list-btn sprite\"><li><a href=\"#\" class=\"btn-red icon-26x26-close\" ng-click=\"closeWindow()\"></a></ul></header><div class=\"win-main\" scrollbar=\"\"><div class=\"box-paper footer\"><div class=\"scroll-wrap\"><div class=\"logo\"><img src=\"https://i.imgur.com/iNcVMvw.png\"></div><table class=\"tbl-border-light tbl-content tbl-medium-height\"><tr><th colspan=\"2\">{{ 'contact' | i18n:loc.ale:'about' }}<tr><td>{{ 'email' | i18n:loc.ale:'about' }}<td>asdasdasd<tr><td colspan=\"2\" class=\"text-center\">cvxcvvvvvvvvvvvvvvvvvvvvvvvvvv</table><table class=\"tbl-border-light tbl-content tbl-medium-height\"><tr><th colspan=\"2\">{{ 'links' | i18n:loc.ale:'about' }}<tr><td>{{ 'source_code' | i18n:loc.ale:'about' }}<td>kkikuikuikuikuikuikik<tr><td>{{ 'issues_suggestions' | i18n:loc.ale:'about' }}<td><a href=\"https://gitlab.com/relaxeaza/twoverflow/issues\" target=\"_blank\">https://gitlab.com/relaxeaza/twoverflow/issues</a><tr><td>{{ 'translations' | i18n:loc.ale:'about' }}<td><a href=\"https://crowdin.com/project/twoverflow\" target=\"_blank\">https://crowdin.com/project/twoverflow</a></table></div></div></div><footer class=\"win-foot\"><ul class=\"list-btn list-center\"><li><a href=\"#\" class=\"btn-border btn-red\" ng-click=\"closeWindow()\">{{ 'cancel' | i18n:loc.ale:'common' }}</a></ul></footer></div>`);
+            interfaceOverflow.addStyle('#two-attackstart{padding:42px 0 0px 0;position:relative;height:100%}#two-attackstart .box-paper a{font-weight:bold;color:#3f2615;text-decoration:none}#two-attackstart .box-paper a:hover{text-shadow:0 1px 0 #000;color:#fff}#two-attackstart .logo{text-align:center;margin-bottom:8px}#two-attackstart table td{padding:0 10px}#two-attackstart table td:first-child{text-align:right;width:20%}');
+        };
+
+        const buildWindow = function () {
+            $scope = $rootScope.$new();
+            $scope.selectTab = selectTab;
+
+            windowManagerService.getModal('!twoverflow_attackstart_window', $scope);
+        };
+
+        return init;
+    });
+
+    require([
+        'two/ready',
+        'two/attackstart',
+        'two/attackstart/ui'
+    ], function (
+        ready,
+        attackstart,
+        attackstartInterface
+    ) {
+        if (attackstart.isInitialized()) {
+            return false;
+        }
+
+        ready(function () {
+            attackstart.init();
+            attackstartInterface();
+        }, ['map']);
+    });
+
+
     define('two/autoCollector', [
         'queues/EventQueue'
     ], function (
